@@ -32,9 +32,9 @@ public class LogisticR {
         double b2=  0; 
         double b3=  0; 
 
-        for (int i = 0; i<100; i++) { //Since there are 10 values in our dataset and we want to run for 4 epochs so total for loop run 40 times
-            int idx = i % x1.length;   //for accessing index after every epoch
-            double p = -(b0 + b1 * x1[idx]+ b2* x2[idx] + b3*x3[idx]); //making the prediction
+        for (int i = 0; i<100; i++) { 
+            int idx = i % x1.length;   
+            double p = -(b0 + b1 * x1[idx]+ b2* x2[idx] + b3*x3[idx]); 
             double pred  = 1/(1+ Math.pow(e,p));
             
             err = y[idx]-pred;  
@@ -58,7 +58,10 @@ public class LogisticR {
     }
 
     public double pred(double test1, double test2, double test3){
-        double pred=this.b0+this.b1*test1+this.b2*test2+this.b3*test3; 
+        double p=this.b0+(this.b1*test1)+(this.b2*test2)+(this.b3*test3); 
+        p=p*-1;
+
+        double pred  = 1/(1+ (Math.pow(2.71828,p)));
 
         return pred;
     }
